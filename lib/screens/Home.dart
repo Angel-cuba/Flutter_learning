@@ -1,9 +1,13 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:weather_app/screens/cities/cities_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void handleNavigateTap(BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => CitiesView())); // Scaffold
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          print('Login');
+                          handleNavigateTap(context);
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue.shade500,
