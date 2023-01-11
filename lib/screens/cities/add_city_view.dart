@@ -14,7 +14,7 @@ class AddCityView extends StatelessWidget {
         elevation: 0.1,
       ),
       body: Padding(
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: const <Widget>[
@@ -23,7 +23,7 @@ class AddCityView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(radius)),
               child: TextField(
                 decoration: InputDecoration(
                     focusedBorder: InputBorder.none,
