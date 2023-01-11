@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/common/header.dart';
-// import 'package:weather_app/constants/ui_constants.dart';
+import 'package:weather_app/constants/debouncer.dart';
+import 'package:weather_app/constants/ui_constants.dart';
 
 class AddCityView extends StatefulWidget {
   const AddCityView({super.key});
@@ -9,8 +10,13 @@ class AddCityView extends StatefulWidget {
   State<AddCityView> createState() => _AddCityViewState();
 }
 
+final debouncer = Debouncer();
+
 void _findandAddCity(String cityName) {
-  print(cityName);
+  debouncer.run(() {
+    // do something with cityName
+    print(cityName);
+  });
 }
 
 class _AddCityViewState extends State<AddCityView> {
@@ -32,7 +38,7 @@ class _AddCityViewState extends State<AddCityView> {
             ),
             SizedBox(height: 20),
             ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(radius)),
               child: TextField(
                 onChanged: _findandAddCity,
                 decoration: InputDecoration(
