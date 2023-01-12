@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather_app/common/header.dart';
 import 'package:weather_app/constants/debouncer.dart';
 import 'package:weather_app/constants/ui_constants.dart';
+import 'package:weather_app/data/data.dart';
+// DotEnv.env['TOKEN']
+
+Future<void> main() async {
+  await dotenv.load();
+  runApp(const AddCityView());
+}
 
 class AddCityView extends StatefulWidget {
   const AddCityView({super.key});
@@ -10,12 +18,15 @@ class AddCityView extends StatefulWidget {
   State<AddCityView> createState() => _AddCityViewState();
 }
 
+const TOKEN =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTY3MzUwOTI2NywiZXhwIjoxNjczNTk1NjY3LCJuYmYiOjE2NzM1MDkyNjcsImp0aSI6ImNkMWViMGRlYzVhOTgxYzUiLCJzdWIiOiJhbmdlbGl0by1jdWJhMTk4NCIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.BUgz-jX2ETXlcqj1-PvwB7CBNQKq2yqKBbWHuzc4EDw';
 final debouncer = Debouncer();
+final token = dotenv.env['API_TOKEN'].toString();
 
 void _findandAddCity(String cityName) {
   debouncer.run(() {
     // do something with cityName
-    print(cityName);
+    fetchData(TOKEN, cityName);
   });
 }
 
