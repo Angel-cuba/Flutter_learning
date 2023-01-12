@@ -1,16 +1,2 @@
-import 'dart:convert';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-
-void fetchData(String token, String text) async {
-  final response = await http.get(
-      Uri.parse('https://pfa.foreca.com/api/v1/location/search/$text?lang=es'),
-      headers: {'Authorization': 'Bearer $token'});
-
-  if (response.statusCode == 200) {
-    final data = json.decode(response.body);
-    print('data: $data');
-  } else {
-    throw Exception('Failed to load data');
-  }
-}
+const TOKEN =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTY3MzUwOTI2NywiZXhwIjoxNjczNTk1NjY3LCJuYmYiOjE2NzM1MDkyNjcsImp0aSI6ImNkMWViMGRlYzVhOTgxYzUiLCJzdWIiOiJhbmdlbGl0by1jdWJhMTk4NCIsImZtdCI6IlhEY09oakM0MCtBTGpsWVR0amJPaUE9PSJ9.BUgz-jX2ETXlcqj1-PvwB7CBNQKq2yqKBbWHuzc4EDw';
